@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Favorite Places | Somesh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== SOFT MAROON & ROSEWOOD PALETTE ===== */
+    :root {
+      --bg: #120d11;                  /* Dark warm black-cherry */
+      --bg-alt: #171116;              
+      --card: rgba(27, 20, 26, 0.75);   /* Glassy dark maroon card */
+      --card-border: rgba(122, 60, 80, 0.25);
+      --line: #2b1d25;                /* Borders */
+      
+      --maroon: #7a2e43;              /* Deep rosewood/maroon */
+      --maroon-hover: #923a52;        
+      --maroon-light: #d68ca1;        /* Soft dusty rose accent */
+      --gold: #caa894;                /* Soft warm taupe/gold */
+      
+      --ink: #f3e8ee;                 /* Warm cream main text */
+      --muted: #a6939d;              /* Secondary muted text */
+      
+      --heading-font: "Bricolage Grotesque", "Trebuchet MS", Arial, sans-serif;
+      --body-font: "DM Sans", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--body-font);
+      background:
+        radial-gradient(ellipse 80% 500px at 50% 0%, rgba(122, 46, 67, 0.22), transparent 70%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    #header {
+      position: relative;
+      padding: 48px 20px 36px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(to bottom, transparent 30%, var(--bg) 100%),
+        linear-gradient(rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(90deg, rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px;
+    }
+
+    #title {
+      font-family: var(--heading-font);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    /* NAVIGATION MENU IFRAME */
+    #menu {
+      background-color: transparent;
+      border-bottom: 1px solid var(--line);
+      padding: 0;
+    }
+
+    #iframe {
+      display: block;
+      width: 100%;
+      height: 55px;
+      border: none;
+      background-color: transparent;
+    }
+
+    /* MAIN CONTENT CONTAINER */
+    #content {
+      flex: 1;
+      width: 92%;
+      max-width: 1050px;
+      margin: 40px auto;
+      padding: 20px 0;
+    }
+
+    .section-intro {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-intro p {
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 60ch;
+      margin: 0 auto;
+    }
+
+    /* 6 BOXES GRID ALIGNMENT */
+    .places-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .place-card {
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--card-border);
+      border-top: 3px solid var(--maroon-light);
+      border-radius: 14px;
+      padding: 24px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .place-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(214, 140, 161, 0.4);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 46, 67, 0.25);
+    }
+
+    .place-meta {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .place-title {
+      font-family: var(--heading-font);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .place-title a {
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .place-title a:hover {
+      color: var(--maroon-light);
+      text-decoration: underline;
+    }
+
+    .place-desc {
+      color: var(--muted);
+      font-size: 14.5px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    #footer {
+      background-color: #0b0709;
+      color: var(--muted);
+      padding: 24px 20px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    #footnote {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE LAYOUT */
+    @media (max-width: 768px) {
+      .places-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #header {
+        padding: 36px 15px 28px;
+      }
+
+      #title {
+        font-size: 26px;
+      }
+
+      #content {
+        width: 90%;
+        margin: 28px auto;
+      }
+
+      #iframe {
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div id="header">
+    <h1 id="title">My Favorite Places</h1>
+  </div>
+
+  <!-- Navigation Menu -->
+  <div id="menu">
+    <iframe
+      id="iframe"
+      src="menu.html"
+      title="Menu"
+      allowtransparency="true">
+    </iframe>
+  </div>
+
+  <!-- Main Content -->
+  <div id="content">
+    
+    <div class="section-intro">
+      <p>Discover some of my favorite destinations across Malaysia that I appreciate for their vibe, food, and culture.</p>
+    </div>
+
+    <div class="places-grid">
+
+      <!-- Box 1 -->
+      <article class="place-card">
+        <div class="place-meta">1 &bull; Hometown & Island City</div>
+        <h2 class="place-title">
+          <a href="https://ms.wikipedia.org/wiki/George_Town,_Pulau_Pinang" target="_blank" rel="noopener">
+            George Town
+          </a>
+        </h2>
+        <p class="place-desc">My hometown. A world-class food paradise filled with rich heritage, iconic street art, and island scenery.</p>
+      </article>
+
+      <!-- Box 2 -->
+      <article class="place-card">
+        <div class="place-meta">2 &bull; Capital City</div>
+        <h2 class="place-title">
+          <a href="https://ms.wikipedia.org/wiki/Kuala_Lumpur" target="_blank" rel="noopener">
+            Kuala Lumpur
+          </a>
+        </h2>
+        <p class="place-desc">A modern skyline dominated by goated skyscrapers, vibrant city lights, and endless urban spots to explore.</p>
+      </article>
+
+      <!-- Box 3 -->
+      <article class="place-card">
+        <div class="place-meta">3 &bull; Hill Station</div>
+        <h2 class="place-title">
+          <a href="https://en.wikipedia.org/wiki/Cameron_Highlands" target="_blank" rel="noopener">
+            Cameron Highlands
+          </a>
+        </h2>
+        <p class="place-desc">The coldest place with fresh mountain air, scenic tea plantations, and a relaxing cool breeze.</p>
+      </article>
+
+      <!-- Box 4 -->
+      <article class="place-card">
+        <div class="place-meta">4 &bull; Heritage City</div>
+        <h2 class="place-title">
+          <a href="https://en.wikipedia.org/wiki/Ipoh" target="_blank" rel="noopener">
+            Ipoh
+          </a>
+        </h2>
+        <p class="place-desc">Famous for its historic Old Town, expressive street art murals, limestone caves, and legendary local coffee.</p>
+      </article>
+
+      <!-- Box 5 -->
+      <article class="place-card">
+        <div class="place-meta">5 &bull; Resort City</div>
+        <h2 class="place-title">
+          <a href="https://en.wikipedia.org/wiki/Genting_Highlands" target="_blank" rel="noopener">
+            Genting Highlands
+          </a>
+        </h2>
+        <p class="place-desc">The ultimate city of entertainment featuring cool mountain breezes, theme parks, and vibrant night spots.</p>
+      </article>
+
+      <!-- Box 6 -->
+      <article class="place-card">
+        <div class="place-meta">6 &bull; Southern Hub</div>
+        <h2 class="place-title">
+          <a href="https://ms.wikipedia.org/wiki/Johor_Bahru" target="_blank" rel="noopener">
+            Johor Bahru
+          </a>
+        </h2>
+        <p class="place-desc">A lively state with great shopping destinations, vibrant cafe culture, and cool coastal hangouts.</p>
+      </article>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <span id="footnote">Web Programming &bull; UKM</span>
+  </div>
+
+</body>
+</html>

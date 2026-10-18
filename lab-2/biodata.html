@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biodata Form | Lab 02</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== SOFT MAROON & ROSEWOOD PALETTE ===== */
+    :root {
+      --bg: #120d11;                  /* Dark warm black-cherry */
+      --bg-alt: #171116;              
+      --card: rgba(27, 20, 26, 0.75);   /* Glassy dark maroon container */
+      --card-border: rgba(122, 60, 80, 0.25);
+      --line: #2b1d25;                /* Borders */
+      
+      --maroon: #7a2e43;              /* Deep rosewood/maroon */
+      --maroon-hover: #923a52;        
+      --maroon-light: #d68ca1;        /* Soft dusty rose accent */
+      --gold: #caa894;                /* Soft warm taupe/gold */
+      
+      --ink: #f3e8ee;                 /* Warm cream main text */
+      --muted: #a6939d;              /* Secondary muted text */
+      
+      --heading-font: "Bricolage Grotesque", "Trebuchet MS", Arial, sans-serif;
+      --body-font: "DM Sans", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--body-font);
+      background:
+        radial-gradient(ellipse 80% 500px at 50% 0%, rgba(122, 46, 67, 0.22), transparent 70%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    #header {
+      position: relative;
+      padding: 48px 20px 32px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(to bottom, transparent 30%, var(--bg) 100%),
+        linear-gradient(rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(90deg, rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px;
+    }
+
+    .header-badge {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    #title {
+      font-family: var(--heading-font);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -1.2px;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--maroon-light);
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* MAIN CONTENT & FORM CARD */
+    #content {
+      flex: 1;
+      width: 92%;
+      max-width: 850px;
+      margin: 36px auto;
+      padding: 40px 36px;
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--card-border);
+      border-top: 3px solid var(--maroon-light);
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.2px;
+    }
+
+    /* FORM INPUTS & CONTROL STYLING */
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    input[type="date"],
+    input[type="tel"],
+    input[type="url"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(18, 13, 17, 0.8);
+      border: 1px solid rgba(122, 60, 80, 0.35);
+      border-radius: 10px;
+      color: #ffffff;
+      font-family: var(--body-font);
+      font-size: 14px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="email"]:focus,
+    input[type="date"]:focus,
+    input[type="tel"]:focus,
+    input[type="url"]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--maroon-light);
+      box-shadow: 0 0 0 3px rgba(214, 140, 161, 0.18);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* RADIO BUTTONS STYLING */
+    .radio-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 8px 0;
+    }
+
+    .radio-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .radio-option input[type="radio"] {
+      accent-color: var(--maroon-light);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    /* RANGE SLIDER STYLING */
+    .range-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    input[type="range"] {
+      flex: 1;
+      accent-color: var(--maroon-light);
+      cursor: pointer;
+    }
+
+    output {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--maroon-light);
+      min-width: 50px;
+    }
+
+    /* COLOR INPUT & FILE INPUT */
+    input[type="color"] {
+      width: 50px;
+      height: 38px;
+      border: 1px solid rgba(122, 60, 80, 0.35);
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+      padding: 2px;
+    }
+
+    input[type="file"] {
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+
+    input[type="file"]::file-selector-button {
+      padding: 8px 16px;
+      background: var(--maroon);
+      border: 1px solid var(--maroon);
+      border-radius: 8px;
+      color: #ffffff;
+      font-family: var(--body-font);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-right: 12px;
+      transition: all 0.2s ease;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+      background: var(--maroon-hover);
+    }
+
+    /* FORM BUTTONS */
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    button[type="submit"] {
+      flex: 2;
+      padding: 12px 20px;
+      background: var(--maroon);
+      border: 1px solid var(--maroon);
+      border-radius: 10px;
+      color: #ffffff;
+      font-family: var(--body-font);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+      background: var(--maroon-hover);
+      border-color: var(--maroon-hover);
+      box-shadow: 0 4px 14px rgba(122, 46, 67, 0.35);
+    }
+
+    button[type="reset"] {
+      flex: 1;
+      padding: 12px 20px;
+      background: transparent;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--muted);
+      font-family: var(--body-font);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button[type="reset"]:hover {
+      border-color: var(--maroon-light);
+      color: #ffffff;
+    }
+
+    /* FOOTER */
+    #footer {
+      background-color: #0b0709;
+      color: var(--muted);
+      padding: 24px 20px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    #footnote {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE LAYOUT */
+    @media (max-width: 600px) {
+      #header { padding: 36px 15px 24px; }
+      #content { width: 90%; margin: 24px auto; padding: 28px 20px; }
+      .form-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div id="header">
+    <span class="header-badge">TTTM2113 &bull; Lab 02</span>
+    <h1 id="title">Biodata Form</h1>
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"></path></svg>
+      <span>Back to Form Menu</span>
+    </a>
+  </div>
+
+  <!-- Main Content -->
+  <div id="content">
+
+    <form action="http://lrgs.ftsm.ukm.my/users/a123456/lab-2/validate_biodata.php" method="post" enctype="multipart/form-data">
+      
+      <div class="form-grid">
+
+        <!-- Name -->
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Insert your name"
+                 pattern="[A-Z][a-z]+(\s[A-Z][a-z]+)*"
+                 title="Name must be in Title Case, e.g. Mohammad Faidzul Nasrudin"
+                 autofocus required>
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" id="age" name="age" min="0" max="100" step="1" required>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+          <label>Gender:</label>
+          <div class="radio-group">
+            <label for="male" class="radio-option">
+              <input type="radio" name="gender" id="male" value="male" checked required>
+              <span>Male</span>
+            </label>
+            <label for="female" class="radio-option">
+              <input type="radio" name="gender" id="female" value="female">
+              <span>Female</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="form-group">
+          <label for="address">Address:</label>
+          <textarea id="address" name="address" cols="50" rows="5" placeholder="Insert your address" required></textarea>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Insert your email"
+                 pattern="[^@\s]+@([A-Za-z0-9\-]+\.)*ukm\.[A-Za-z.]+"
+                 title="Email must contain ukm, e.g. mfn@ukm.edu.my"
+                 required>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group">
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" required>
+        </div>
+
+        <!-- Height -->
+        <div class="form-group">
+          <label for="heightId">Height:</label>
+          <div class="range-wrap">
+            <input type="range" name="height" id="heightId" min="100" max="200" value="150"
+                   oninput="outputID.value = heightId.value + 'cm'" required>
+            <output name="outputName" id="outputID">150cm</output>
+          </div>
+        </div>
+
+        <!-- Tel -->
+        <div class="form-group">
+          <label for="phone">Tel:</label>
+          <input type="tel" id="phone" name="phone" placeholder="+60##-#######"
+                 pattern="(\+60|0060)[0-9\-]{8,12}"
+                 title="Phone number must begin with +60 or 0060, e.g. +6012-2646234"
+                 required>
+        </div>
+
+        <!-- My Favorite Color -->
+        <div class="form-group">
+          <label for="color">My Favorite Color:</label>
+          <input type="color" id="color" name="color" value="#008000" required>
+        </div>
+
+        <!-- Social URL -->
+        <div class="form-group">
+          <label for="fbtwig">Fb/TW/IG:</label>
+          <input type="url" id="fbtwig" name="fbtwig" placeholder="Insert the URL" required>
+        </div>
+
+        <!-- Face Photo -->
+        <div class="form-group">
+          <label for="photo">My Face Photo:</label>
+          <input type="file" id="photo" name="photo" accept="image/*" required>
+        </div>
+
+        <!-- University -->
+        <div class="form-group">
+          <label for="university">My University:</label>
+          <select id="university" name="university" required>
+            <option value="">Select</option>
+            <option value="UPM">Universiti Putra Malaysia</option>
+            <option value="UKM" selected>Universiti Kebangsaan Malaysia</option>
+            <option value="UM">Universiti Malaya</option>
+            <option value="USM">Universiti Sains Malaysia</option>
+            <option value="UTM">Universiti Teknologi Malaysia</option>
+          </select>
+        </div>
+
+      </div>
+
+      <input type="hidden" name="matricnum" value="a218815">
+
+      <div class="form-actions">
+        <button type="submit" name="biodata_form" value="Submit My Biodata">Submit My Biodata</button>
+        <button type="reset">Reset</button>
+      </div>
+
+    </form>
+
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <span id="footnote">Somesh (A218815) &bull; Web Programming &#64; UKM</span>
+  </div>
+
+</body>
+</html>

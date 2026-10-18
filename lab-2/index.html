@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Forms | Lab 02</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== SOFT MAROON & ROSEWOOD PALETTE ===== */
+    :root {
+      --bg: #120d11;                  /* Dark warm black-cherry */
+      --bg-alt: #171116;              
+      --card: rgba(27, 20, 26, 0.75);   /* Glassy dark maroon container */
+      --card-border: rgba(122, 60, 80, 0.25);
+      --line: #2b1d25;                /* Borders */
+      
+      --maroon: #7a2e43;              /* Deep rosewood/maroon */
+      --maroon-hover: #923a52;        
+      --maroon-light: #d68ca1;        /* Soft dusty rose accent */
+      --gold: #caa894;                /* Soft warm taupe/gold */
+      
+      --ink: #f3e8ee;                 /* Warm cream main text */
+      --muted: #a6939d;              /* Secondary muted text */
+      
+      --heading-font: "Bricolage Grotesque", "Trebuchet MS", Arial, sans-serif;
+      --body-font: "DM Sans", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--body-font);
+      background:
+        radial-gradient(ellipse 80% 500px at 50% 0%, rgba(122, 46, 67, 0.22), transparent 70%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    #header {
+      position: relative;
+      padding: 56px 20px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(to bottom, transparent 30%, var(--bg) 100%),
+        linear-gradient(rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(90deg, rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px;
+    }
+
+    .header-badge {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    #title {
+      font-family: var(--heading-font);
+      font-size: clamp(2.2rem, 5.5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    #subtitle {
+      font-size: 13.5px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* MAIN CONTAINER */
+    #content {
+      flex: 1;
+      width: 92%;
+      max-width: 1050px;
+      margin: 40px auto;
+      padding: 44px 36px;
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--card-border);
+      border-top: 3px solid var(--maroon-light);
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .section-intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .intro-meta {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--maroon-light);
+      margin-bottom: 6px;
+    }
+
+    .section-intro h2 {
+      font-family: var(--heading-font);
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .section-intro p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 58ch;
+      margin: 0 auto;
+    }
+
+    /* 3-CARD GRID */
+    .forms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .form-card {
+      background: linear-gradient(145deg, rgba(34, 23, 31, 0.85), rgba(22, 15, 21, 0.85));
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .form-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(214, 140, 161, 0.4);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 24px rgba(122, 46, 67, 0.25);
+    }
+
+    .card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(122, 46, 67, 0.2);
+      border: 1px solid rgba(214, 140, 161, 0.25);
+      color: var(--maroon-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .card-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .card-action {
+      margin-top: auto;
+    }
+
+    .enter-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 10px 18px;
+      background: var(--maroon);
+      border: 1px solid var(--maroon);
+      border-radius: 10px;
+      color: #ffffff;
+      font-family: var(--body-font);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .enter-btn:hover {
+      background: var(--maroon-hover);
+      border-color: var(--maroon-hover);
+      box-shadow: 0 4px 14px rgba(122, 46, 67, 0.35);
+    }
+
+    /* FOOTER */
+    #footer {
+      background-color: #0b0709;
+      color: var(--muted);
+      padding: 24px 20px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    #footnote {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .forms-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #header { padding: 40px 15px 30px; }
+      #content { width: 90%; margin: 28px auto; padding: 32px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div id="header">
+    <span class="header-badge">TTTM2113 &bull; Web Programming &bull; UKM</span>
+    <h1 id="title">HTML Forms</h1>
+    <p id="subtitle">&ldquo;Choose thy form to enter data, authenticate, or search records.&rdquo;</p>
+  </div>
+
+  <!-- Main Content -->
+  <div id="content">
+    
+    <div class="section-intro">
+      <span class="intro-meta">The Path</span>
+      <h2>Choose Your Form</h2>
+      <p>Each module provides distinct functionality. Select a option below to input personal details, gain server access, or search stored records.</p>
+    </div>
+
+    <div class="forms-grid">
+
+      <!-- Card 1: Biodata -->
+      <article class="form-card">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        <h3 class="card-title">Fill Biodata</h3>
+        <p class="card-desc">Submit your personal details, age, location, contact, photo, and academic profile.</p>
+        <div class="card-action">
+          <a href="biodata.html" class="enter-btn">
+            <span>Open Biodata</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2: Login -->
+      <article class="form-card">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </div>
+        <h3 class="card-title">Login</h3>
+        <p class="card-desc">Authenticate your credentials to gain secure user access unto the server.</p>
+        <div class="card-action">
+          <a href="login.html" class="enter-btn">
+            <span>Open Login</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3: Search -->
+      <article class="form-card">
+        <div class="card-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        <h3 class="card-title">Search</h3>
+        <p class="card-desc">Seek forth records and query information stored within the system database.</p>
+        <div class="card-action">
+          <a href="search.html" class="enter-btn">
+            <span>Open Search</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <span id="footnote">Somesh (A218815) &bull; Web Programming &#64; UKM</span>
+  </div>
+
+</body>
+</html>

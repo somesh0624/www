@@ -1,0 +1,317 @@
+<!--
+Matric Number: A218848
+Name: Muhammad Adam Irfan bin Mohd Hanafiah
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Favourite Media | Somesh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== SOFT MAROON & ROSEWOOD PALETTE ===== */
+    :root {
+      --bg: #120d11;                  /* Dark warm black-cherry */
+      --bg-alt: #171116;              
+      --card: rgba(27, 20, 26, 0.75);   /* Glassy dark maroon container */
+      --card-border: rgba(122, 60, 80, 0.25);
+      --line: #2b1d25;                /* Borders */
+      
+      --maroon: #7a2e43;              /* Deep rosewood/maroon */
+      --maroon-hover: #923a52;        
+      --maroon-light: #d68ca1;        /* Soft dusty rose accent */
+      --gold: #caa894;                /* Soft warm taupe/gold */
+      
+      --ink: #f3e8ee;                 /* Warm cream main text */
+      --muted: #a6939d;              /* Secondary muted text */
+      
+      --heading-font: "Bricolage Grotesque", "Trebuchet MS", Arial, sans-serif;
+      --body-font: "DM Sans", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--body-font);
+      background:
+        radial-gradient(ellipse 80% 500px at 50% 0%, rgba(122, 46, 67, 0.22), transparent 70%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER */
+    #header {
+      position: relative;
+      padding: 48px 20px 36px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(to bottom, transparent 30%, var(--bg) 100%),
+        linear-gradient(rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px,
+        linear-gradient(90deg, rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px;
+    }
+
+    #title {
+      font-family: var(--heading-font);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin: 0;
+    }
+
+    /* NAVIGATION MENU IFRAME */
+    #menu {
+      background-color: transparent;
+      border-bottom: 1px solid var(--line);
+      padding: 0;
+    }
+
+    #iframe {
+      display: block;
+      width: 100%;
+      height: 55px;
+      border: none;
+      background-color: transparent;
+    }
+
+    /* MAIN CONTENT CONTAINER */
+    #content {
+      flex: 1;
+      width: 92%;
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px 0;
+    }
+
+    /* MEDIA GRID SHOWCASE */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .media-card {
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--card-border);
+      border-top: 3px solid var(--maroon-light);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(214, 140, 161, 0.4);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 20px rgba(122, 46, 67, 0.25);
+    }
+
+    .media-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .media-category {
+      font-family: var(--heading-font);
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .media-badge {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 3px 10px;
+      background: rgba(202, 168, 148, 0.08);
+      border: 1px solid rgba(202, 168, 148, 0.2);
+      border-radius: 20px;
+    }
+
+    .media-wrapper {
+      margin-top: auto;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--line);
+    }
+
+    /* MEDIA ELEMENTS STYLING */
+    .media-wrapper img {
+      display: block;
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .media-card:hover .media-wrapper img {
+      transform: scale(1.02);
+    }
+
+    .media-wrapper video {
+      display: block;
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #000;
+    }
+
+    .audio-wrapper {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .audio-wrapper audio {
+      width: 100%;
+      filter: invert(0.9) hue-rotate(280deg); /* Blends default browser audio player with dark maroon theme */
+    }
+
+    /* FOOTER */
+    #footer {
+      background-color: #0b0709;
+      color: var(--muted);
+      padding: 24px 20px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    #footnote {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE LAYOUT */
+    @media (max-width: 768px) {
+      .media-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #header {
+        padding: 36px 15px 28px;
+      }
+
+      #title {
+        font-size: 26px;
+      }
+
+      #content {
+        width: 90%;
+        margin: 28px auto;
+      }
+
+      #iframe {
+        height: 60px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div id="header">
+    <h1 id="title">My Favourite Media</h1>
+  </div>
+
+  <!-- Navigation Menu -->
+  <div id="menu">
+    <iframe
+      id="iframe"
+      src="menu.html"
+      title="Menu"
+      allowtransparency="true">
+    </iframe>
+  </div>
+
+  <!-- Main Content -->
+  <div id="content">
+    <div class="media-grid">
+
+      <!-- Static Image -->
+      <article class="media-card">
+        <div class="media-header">
+          <h2 class="media-category">Static</h2>
+          <span class="media-badge">PNG Image</span>
+        </div>
+        <div class="media-wrapper">
+          <img src="arthur.png" alt="My favourite static image">
+        </div>
+      </article>
+
+      <!-- Animated GIF -->
+      <article class="media-card">
+        <div class="media-header">
+          <h2 class="media-category">Animated</h2>
+          <span class="media-badge">GIF Animation</span>
+        </div>
+        <div class="media-wrapper">
+          <img src="mess.gif" alt="My favourite Messi animation">
+        </div>
+      </article>
+
+      <!-- Audio Track -->
+      <article class="media-card">
+        <div class="media-header">
+          <h2 class="media-category">Music</h2>
+          <span class="media-badge">MP3 Audio</span>
+        </div>
+        <div class="media-wrapper audio-wrapper">
+          <audio controls autoplay>
+            <source src="call.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </article>
+
+      <!-- Video Clip -->
+      <article class="media-card">
+        <div class="media-header">
+          <h2 class="media-category">Video</h2>
+          <span class="media-badge">MP4 Video</span>
+        </div>
+        <div class="media-wrapper">
+          <video controls autoplay muted loop>
+            <source src="goal.mp4" type="video/mp4">
+            Your browser does not support the video element.
+          </video>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer">
+    <span id="footnote">Web Programming &#64; UKM &trade;</span>
+  </div>
+
+</body>
+</html>

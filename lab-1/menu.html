@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Menu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== TRANSPARENT MAROON MENU ===== */
+    :root {
+      --maroon: #7a2e43;
+      --maroon-hover: #923a52;
+      --maroon-light: #d68ca1;
+      --ink: #f3e8ee;
+      --muted: #a6939d;
+      --body-font: "DM Sans", "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: transparent !important;
+      font-family: var(--body-font);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    #menubar {
+      text-align: center;
+      width: 100%;
+    }
+
+    #menulist {
+      list-style-type: none;
+      margin: 0;
+      padding: 0 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 6px 10px;
+    }
+
+    #menulist li {
+      display: inline-block;
+    }
+
+    #menulist a {
+      display: inline-block;
+      color: var(--maroon-light);
+      font-size: 13.5px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* HOVER EFFECT: Glow pill */
+    #menulist a:hover {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--maroon), var(--maroon-hover));
+      border-color: rgba(214, 140, 161, 0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(122, 46, 67, 0.4), 0 0 16px rgba(214, 140, 161, 0.2);
+    }
+
+    #menulist a:active {
+      transform: translateY(0);
+    }
+
+    #menulist a:focus-visible {
+      outline: 2px solid var(--maroon-light);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="menubar">
+    <ul id="menulist">
+      <li>
+        <a href="index.html" target="_parent">Home</a>
+      </li>
+      <li>
+        <a href="hi.html" target="_parent">Hi</a>
+      </li>
+      <li>
+        <a href="places.html" target="_parent">My Favorite Places</a>
+      </li>
+      <li>
+        <a href="skills.html" target="_parent">My Computing Skills</a>
+      </li>
+      <li>
+        <a href="media.html" target="_parent">My Favorite Media</a>
+      </li>
+      <li>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=someshlm10%40gmail.com"
+           target="_blank"
+           rel="noopener">
+          Contact Me
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</body>
+</html>
