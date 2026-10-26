@@ -7,17 +7,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800;900&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== TRANSPARENT MAROON MENU ===== */
+    /* ===== TRANSPARENT OUTLAW MENU ===== */
     :root {
-      --maroon: #7a2e43;
-      --maroon-hover: #923a52;
-      --maroon-light: #d68ca1;
-      --ink: #f3e8ee;
-      --muted: #a6939d;
-      --body-font: "DM Sans", "Segoe UI", Arial, sans-serif;
+      --red: #d11f1f;
+      --red-d: #6e0b0b;
+      --glow: rgba(209,31,31,.45);
+      --gold-l: #fce1a9;
+      --gold: #d49f4c;
+      --muted: #b09aa6;
+      --font-heading: "Cinzel", Georgia, serif;
     }
 
     * {
@@ -28,7 +29,7 @@
 
     html, body {
       background: transparent !important;
-      font-family: var(--body-font);
+      font-family: var(--font-heading);
       overflow: hidden;
       display: flex;
       align-items: center;
@@ -49,7 +50,7 @@
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 6px 10px;
+      gap: 6px 12px;
     }
 
     #menulist li {
@@ -58,23 +59,25 @@
 
     #menulist a {
       display: inline-block;
-      color: var(--maroon-light);
-      font-size: 13.5px;
-      font-weight: 600;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
       text-decoration: none;
-      padding: 6px 14px;
-      border-radius: 20px;
+      padding: 6px 16px;
       border: 1px solid transparent;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* HOVER EFFECT: Glow pill */
+    /* HOVER EFFECT: Red Dead Gold Highlight */
     #menulist a:hover {
       color: #ffffff;
-      background: linear-gradient(135deg, var(--maroon), var(--maroon-hover));
-      border-color: rgba(214, 140, 161, 0.3);
+      background: linear-gradient(135deg, var(--red), var(--red-d));
+      border-color: var(--gold-l);
+      box-shadow: 0 4px 15px var(--glow);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(122, 46, 67, 0.4), 0 0 16px rgba(214, 140, 161, 0.2);
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
     }
 
     #menulist a:active {
@@ -82,7 +85,7 @@
     }
 
     #menulist a:focus-visible {
-      outline: 2px solid var(--maroon-light);
+      outline: 2px solid var(--gold-l);
       outline-offset: 2px;
     }
   </style>
@@ -116,6 +119,59 @@
       </li>
     </ul>
   </div>
+
+  <!-- Sound System inside Iframe -->
+  <script>
+  (function () {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    var ctx, master;
+    function init() {
+      if (!ctx) {
+        ctx = new AC();
+        master = ctx.createGain();
+        master.gain.value = 0.5;
+        master.connect(ctx.destination);
+      }
+      if (ctx.state === 'suspended') ctx.resume();
+    }
+    function env(g, t, peak, dur) {
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(peak, t + 0.004);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    }
+    function tone(type, f0, f1, dur, peak) {
+      var t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = type;
+      o.frequency.setValueAtTime(f0, t);
+      o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+      env(g, t, peak, dur);
+      o.connect(g).connect(master);
+      o.start(t); o.stop(t + dur + 0.02);
+    }
+    function noise(dur, peak, freq, q) {
+      var t = ctx.currentTime, n = Math.floor(ctx.sampleRate * dur);
+      var b = ctx.createBuffer(1, n, ctx.sampleRate), d = b.getChannelData(0);
+      for (var i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+      var s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+      s.buffer = b; f.type = 'bandpass'; f.frequency.value = freq; f.Q.value = q;
+      env(g, t, peak, dur);
+      s.connect(f).connect(g).connect(master);
+      s.start(t);
+    }
+    function playHover() { init(); tone('triangle', 620, 380, 0.06, 0.10); noise(0.04, 0.06, 2500, 1.2); }
+    function playClick() { init(); tone('sine', 170, 55, 0.22, 0.55); tone('triangle', 900, 420, 0.05, 0.18); noise(0.06, 0.18, 1800, 0.9); }
+
+    ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+      addEventListener(ev, init, { once: true, passive: true });
+    });
+
+    document.querySelectorAll('#menulist a').forEach(function (el) {
+      el.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') playHover(); });
+      el.addEventListener('click', playClick);
+    });
+  })();
+  </script>
 
 </body>
 </html>

@@ -7,32 +7,32 @@ Name: SOMESH A/L MURUGESEN
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="theme-color" content="#070305">
   <title>My Personal Pages | Lab 01</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    
     :root {
-      --bg: #120d11;                  
-      --bg-alt: #171116;              
-      --card: rgba(27, 20, 26, 0.75);   
-      --card-border: rgba(122, 60, 80, 0.25);
-      --line: #2b1d25;                
+      --bg: #070305;
+      --red: #d11f1f;
+      --red-d: #6e0b0b;
+      --glow: rgba(209,31,31,.45);
+      --gold-l: #fce1a9;
+      --gold: #d49f4c;
+      --gold-d: #825b21;
+      --paper: #e8d5b0;
+      --paper-d: #c9ae7c;
+      --ink: #2a1a0e;
+      --text: #f0e2d3;
+      --muted: #b09aa6;
+      --line: rgba(212,159,76,.28);
       
-      --maroon: #7a2e43;              
-      --maroon-hover: #923a52;        
-      --maroon-light: #d68ca1;        
-      --gold: #caa894;                
-      
-      --ink: #f3e8ee;                 
-      --muted: #a6939d;              
-      
-      --heading-font: "Bricolage Grotesque", "Trebuchet MS", Arial, sans-serif;
-      --body-font: "DM Sans", "Segoe UI", Arial, sans-serif;
+      --heading-font: "Cinzel Decorative", "Cinzel", Georgia, serif;
+      --body-font: "Plus Jakarta Sans", system-ui, sans-serif;
+      --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 .85 0 0 0 0 .6 0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     }
 
     * {
@@ -43,48 +43,95 @@ Name: SOMESH A/L MURUGESEN
 
     body {
       font-family: var(--body-font);
-      background:
-        radial-gradient(ellipse 80% 500px at 50% 0%, rgba(122, 46, 67, 0.22), transparent 70%),
-        var(--bg);
-      color: var(--ink);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 110% 720px at 50% -160px, rgba(209,31,31,.45), transparent 75%),
+        radial-gradient(ellipse 620px 420px at 100% 100%, rgba(110,11,11,.38), transparent 70%),
+        radial-gradient(ellipse 620px 420px at 0 55%, rgba(110,11,11,.26), transparent 70%);
+      background-attachment: fixed;
+      color: var(--text);
       line-height: 1.65;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: var(--grain);
+      opacity: .05;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.65));
+      pointer-events: none;
+      z-index: 49;
+    }
+
+    ::selection {
+      background: var(--red);
+      color: #fff;
     }
 
     /* HEADER */
     #header {
       position: relative;
-      padding: 48px 20px 36px;
+      z-index: 2;
+      padding: 56px 20px 42px;
       text-align: center;
-      border-bottom: 1px solid var(--line);
-      background:
-        linear-gradient(to bottom, transparent 30%, var(--bg) 100%),
-        linear-gradient(rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px,
-        linear-gradient(90deg, rgba(202, 168, 148, .04) 1px, transparent 1px) 0 0 / 36px 36px;
+      border-bottom: 2px solid var(--gold-d);
+      background: rgba(12, 6, 10, 0.6);
+    }
+
+    #header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+
+    #header::after {
+      content: "";
+      position: absolute;
+      bottom: -4px; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-l), var(--red), var(--gold-l), transparent);
+      box-shadow: 0 0 18px var(--glow);
     }
 
     #title {
       font-family: var(--heading-font);
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -1px;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: .04em;
       color: #ffffff;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(209,31,31,.7), 0 3px 0 var(--red-d), 0 6px 14px rgba(0,0,0,.95);
     }
 
     #subtitle {
+      font-family: "Cinzel", Georgia, serif;
       font-size: 13px;
-      color: var(--gold);
-      font-weight: 600;
-      letter-spacing: 1px;
+      color: var(--gold-l);
+      font-weight: 700;
+      letter-spacing: .15em;
       text-transform: uppercase;
     }
 
     /* NAVIGATION MENU IFRAME */
     #menu {
-      background-color: transparent;
+      position: relative;
+      z-index: 10;
+      background-color: rgba(12, 6, 10, 0.95);
       border-bottom: 1px solid var(--line);
       padding: 0;
     }
@@ -99,69 +146,99 @@ Name: SOMESH A/L MURUGESEN
 
     /* MAIN CONTENT AREA */
     #content {
+      position: relative;
+      z-index: 2;
       flex: 1;
       width: 92%;
       max-width: 900px;
-      margin: 40px auto;
-      padding: 48px 36px;
-      background: var(--card);
-      backdrop-filter: blur(8px);
-      border: 1px solid var(--card-border);
-      border-top: 3px solid var(--maroon-light);
-      border-radius: 16px;
+      margin: 48px auto;
+      padding: 44px 36px;
+      background: var(--paper);
+      background-image: var(--grain), linear-gradient(165deg, #f3e4c3, var(--paper-d));
+      background-blend-mode: multiply;
+      border: 1px solid #8a6a36;
+      border-radius: 0;
       text-align: center;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 22px 48px -12px rgba(0,0,0,.95), inset 0 0 40px rgba(110,70,20,.35);
+      color: var(--ink);
     }
 
+    #content::before, #content::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--ink);
+      opacity: .75;
+      pointer-events: none;
+    }
+
+    #content::before { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
+    #content::after { bottom: 8px; right: 8px; border-left: 0; border-top: 0; }
+
     .content-line {
-      width: 48px;
+      width: 60px;
       height: 3px;
-      background-color: var(--maroon-light);
+      background: linear-gradient(90deg, var(--red-d), var(--red));
       margin: 0 auto 24px;
-      border-radius: 99px;
     }
 
     #content h2 {
-      font-family: var(--heading-font);
-      color: #ffffff;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+      font-family: "Cinzel", Georgia, serif;
+      color: var(--red-d);
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       margin-bottom: 12px;
     }
 
     #content p {
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
-      max-width: 50ch;
+      color: #3d2817;
+      font-size: 16.5px;
+      font-weight: 600;
+      line-height: 1.75;
+      max-width: 52ch;
       margin: 0 auto;
     }
 
     /* FOOTER */
     #footer {
-      background-color: #0b0709;
+      position: relative;
+      z-index: 2;
+      background-color: #040203;
       color: var(--muted);
-      padding: 24px 20px;
+      padding: 28px 20px;
       text-align: center;
       border-top: 1px solid var(--line);
     }
 
+    #footer::before {
+      content: "";
+      position: absolute;
+      top: -1px; left: 50%;
+      width: 160px; height: 2px;
+      margin-left: -80px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+
     #footnote {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.4px;
+      font-family: "Cinzel", Georgia, serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .12em;
       color: var(--muted);
+      text-transform: uppercase;
     }
 
     /* PHONE LAYOUT */
     @media (max-width: 600px) {
       #header {
-        padding: 36px 15px 28px;
+        padding: 38px 15px 28px;
       }
 
       #title {
-        font-size: 26px;
+        font-size: 2rem;
       }
 
       #subtitle {
@@ -170,16 +247,16 @@ Name: SOMESH A/L MURUGESEN
 
       #content {
         width: 90%;
-        margin: 28px auto;
+        margin: 32px auto;
         padding: 32px 20px;
       }
 
       #content h2 {
-        font-size: 22px;
+        font-size: 24px;
       }
 
       #content p {
-        font-size: 14px;
+        font-size: 15px;
       }
 
       #iframe {
@@ -225,6 +302,81 @@ Name: SOMESH A/L MURUGESEN
       Web Programming &#64; UKM &trade;
     </span>
   </div>
+<script>
+  (function () {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
 
+    var ctx, master, muted = false;
+    try { muted = localStorage.getItem('sfx') === 'off'; } catch (e) {}
+
+    function init() {
+      if (!ctx) {
+        ctx = new AC();
+        master = ctx.createGain();
+        master.gain.value = 0.5; // Overall volume
+        master.connect(ctx.destination);
+      }
+      if (ctx.state === 'suspended') ctx.resume();
+    }
+
+    function env(g, t, peak, dur) {
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(peak, t + 0.004);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    }
+
+    function tone(type, f0, f1, dur, peak) {
+      var t = ctx.currentTime, o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = type;
+      o.frequency.setValueAtTime(f0, t);
+      o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+      env(g, t, peak, dur);
+      o.connect(g).connect(master);
+      o.start(t); 
+      o.stop(t + dur + 0.02);
+    }
+
+    function noise(dur, peak, freq, q) {
+      var t = ctx.currentTime, n = Math.floor(ctx.sampleRate * dur);
+      var b = ctx.createBuffer(1, n, ctx.sampleRate), d = b.getChannelData(0);
+      for (var i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+      var s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+      s.buffer = b; f.type = 'bandpass'; f.frequency.value = freq; f.Q.value = q;
+      env(g, t, peak, dur);
+      s.connect(f).connect(g).connect(master);
+      s.start(t);
+    }
+
+    var sounds = {
+      hover: function () { tone('triangle', 620, 380, 0.06, 0.10); noise(0.04, 0.06, 2500, 1.2); },
+      click: function () { tone('sine', 170, 55, 0.22, 0.55); tone('triangle', 900, 420, 0.05, 0.18); noise(0.06, 0.18, 1800, 0.9); }
+    };
+
+    function play(name) {
+      if (muted) return;
+      init();
+      sounds[name]();
+    }
+
+    // Unlock Web Audio Context on first interaction
+    ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+      addEventListener(ev, init, { once: true, passive: true });
+    });
+
+    // Attach sound handlers to links, buttons, and menu items
+    document.addEventListener('DOMContentLoaded', function() {
+      var elements = document.querySelectorAll('a, button, .skill-pill, .place-card, .media-card');
+      elements.forEach(function (el) {
+        el.addEventListener('pointerenter', function (e) {
+          if (e.pointerType === 'mouse') play('hover');
+        });
+        el.addEventListener('click', function () {
+          play('click');
+        });
+      });
+    });
+  })();
+  </script>
 </body>
 </html>

@@ -127,6 +127,17 @@ ob_start();
               <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
             </td>
           </tr>
+          <tr>
+             <td>SK002</td>
+            <td>Nowhere Strawberry Socks</td>
+            <td>RM 25.00</td>
+            <td>Cosmic Collection</td>
+            <td>
+              <a href="#" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
+              <button type="button" class="btn btn-sm btn-info text-white"><i class="bi bi-image"></i></button>
+              <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
