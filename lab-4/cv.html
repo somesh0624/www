@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SOMESH's Digital CV</title>
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.css">
+  
+  <style>
+    .hover-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4) !important;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .profile-img-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+    .profile-img-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .img-hover {
+      opacity: 0;
+    }
+    .profile-img-container:hover .img-default {
+      opacity: 0;
+    }
+    .profile-img-container:hover .img-hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-semibold" href="#">
+        <i class="bi bi-person-circle"></i> My CV
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Featured Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#references">References</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 2. Colored Banner -->
+  <div id="home" class="bg-primary text-white py-5 mb-5">
+    <div class="container text-center">
+      <h2 class="mb-0 fw-bold">Digital Curriculum Vitae</h2>
+      <p class="mb-0 mt-2">Last updated: <span class="fw-light">October 2026</span></p>
+    </div>
+  </div>
+
+  <!-- 3. Profile Section -->
+  <div class="container mb-5">
+    <div class="row align-items-center">
+      <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
+        <div class="profile-img-container">
+          <img src="somesh.jpg" alt="Profile Photo 1" class="img-default">
+          <img src="me.jpeg" alt="Profile Photo 2" class="img-hover">
+        </div>
+      </div>
+      <div class="col-12 col-md-8">
+        <h1 class="display-3 fw-bold">SOMESH</h1>
+        <p class="lead text-muted">2nd Year Software Engineering Student | Aspiring Web Developer</p>
+        <p class="lead">
+          I am a second-year Software Engineering undergraduate at UKM, passionate about building web applications and exploring modern software development practices.
+        </p>
+        <p>
+          I focus on <mark>full-stack web application development</mark>, database design, and responsive interfaces using modern frameworks like <strong>Bootstrap 5</strong>, <em>PHP</em>, and <em>MySQL</em>.
+        </p>
+        <div class="mt-4">
+          <a href="SOMESH_CV.pdf" download="SOMESH_CV.pdf" class="btn btn-primary btn-lg me-2 shadow-sm">
+            <i class="bi bi-download"></i> Download CV
+          </a>
+          <a href="#contact" class="btn btn-outline-success btn-lg shadow-sm">
+            <i class="bi bi-envelope"></i> Contact Me
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Skills Table -->
+  <div id="skills" class="container mb-5">
+    <h2 class="border-bottom pb-2 mb-3">Skills</h2>
+    <div class="table-responsive shadow-sm rounded">
+      <table class="table table-striped table-hover align-middle table-bordered mb-0">
+        <thead class="table-primary">
+          <tr>
+            <th class="col-4">Skill</th>
+            <th class="col-4">Proficiency</th>
+            <th class="col-4">Years of Experience</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HTML, CSS, Bootstrap 5</td>
+            <td><span class="badge rounded-pill bg-warning text-dark">Intermediate</span></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>PHP & MySQL</td>
+            <td><span class="badge rounded-pill bg-warning text-dark">Intermediate</span></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Java & C++ Programming</td>
+            <td><span class="badge rounded-pill bg-warning text-dark">Intermediate</span></td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>JavaScript & DOM Manipulation</td>
+            <td><span class="badge bg-info text-dark">Learning</span></td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>Git & GitHub</td>
+            <td><span class="badge bg-info text-dark">Learning</span></td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. Contact Form -->
+  <div id="contact" class="container mb-5">
+    <h2 class="border-bottom pb-2 mb-3">
+      <i class="bi bi-envelope"></i> Contact Me
+    </h2>
+    <form id="contactForm" class="p-4 border rounded shadow-sm bg-body-tertiary">
+      <div class="row g-3">
+        <div class="col-12 col-md-4">
+          <label for="inputName" class="form-label">Name</label>
+          <input type="text" class="form-control" id="inputName" placeholder="Your name" required>
+        </div>
+        <div class="col-12 col-md-4">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="you@example.com" required>
+        </div>
+        <div class="col-12 col-md-4">
+          <label for="inputPhone" class="form-label">Phone</label>
+          <input type="tel" class="form-control" id="inputPhone" placeholder="+6012-3456789">
+        </div>
+        <div class="col-12">
+          <label for="inputMessage" class="form-label">Message</label>
+          <textarea class="form-control" id="inputMessage" rows="3" placeholder="How can I help you?" required></textarea>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary px-5 py-2">
+            <i class="bi bi-send"></i> Send Message
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- 6. Featured Projects -->
+  <div id="projects" class="container mb-5">
+    <h2 class="border-bottom pb-2 mb-4">Featured Projects</h2>
+    <div class="row g-4">
+      
+      <!-- Project 1 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm hover-card border bg-body-tertiary">
+          <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-code-slash"></i> Portfolio Website</span>
+            <span class="badge bg-primary">Featured</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Personal Portfolio</h5>
+            <p class="card-text text-muted">
+              A responsive digital CV and portfolio built with Bootstrap 5, featuring dark mode, interactive image toggles, and clean CSS animations.
+            </p>
+            <a href="http://lrgs.ftsm.ukm.my/users/a218815" class="btn btn-primary" target="_blank" rel="noopener">View Project</a>
+          </div>
+          <div class="card-footer text-muted">
+            Completed: September 2026
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm hover-card border bg-body-tertiary">
+          <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-bag-heart"></i> Galaxy Socks</span>
+            <span class="badge bg-warning text-dark">In Progress</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Galaxy Socks Web App</h5>
+            <p class="card-text text-muted">
+              A modular web application using PHP, Bootstrap 5, and MySQL for inventory, customer records, and sales invoice generation.
+              <br>Reviews <span class="badge bg-danger ms-2">0</span>
+            </p>
+            <a href="http://lrgs.ftsm.ukm.my/users/a218815/pt1/home.php" class="btn btn-primary" target="_blank" rel="noopener">View Project</a>
+          </div>
+          <div class="card-footer text-muted">
+            Started: October 2026
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm hover-card border bg-body-tertiary">
+          <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-calendar-check"></i> Task Manager</span>
+            <span class="badge bg-success">Completed</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Malaysia Road Accidents Statistics Dashboard</h5>
+            <p class="card-text text-muted">
+              An interactive Tableau dashboard visualizing the steady escalation of road-related accidents in Malaysia from 2015 to 2019 to raise awareness about road safety and promote a safer environment for all road users.
+            </p>
+            <a href="https://public.tableau.com/app/profile/somesh.murugesen/viz/MALAYSIAROADACCIDENTSSTATISTIC2015-2019/Dashboard2" class="btn btn-primary" target="_blank" rel="noopener">View Project</a>
+          </div>
+          <div class="card-footer text-muted">
+            Completed: March 2026
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- 7. References Section -->
+  <div id="references" class="container mb-5">
+    <h2 class="border-bottom pb-2 mb-4">
+      <i class="bi bi-people-fill"></i> References
+    </h2>
+    
+    <!-- Nav Pills -->
+    <ul class="nav nav-pills justify-content-center mb-4" id="referenceTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="supervisor-tab" data-bs-toggle="pill" data-bs-target="#supervisor" type="button" role="tab" aria-controls="supervisor" aria-selected="true">
+          <i class="bi bi-person-badge"></i> Academic Supervisor
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link ms-2" id="colleague-tab" data-bs-toggle="pill" data-bs-target="#colleague" type="button" role="tab" aria-controls="colleague" aria-selected="false">
+          <i class="bi bi-person-bounding-box"></i> Colleague
+        </button>
+      </li>
+    </ul>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="referenceTabsContent">
+      <!-- Supervisor Tab -->
+      <div class="tab-pane fade show active" id="supervisor" role="tabpanel" aria-labelledby="supervisor-tab">
+        <div class="card shadow-sm border bg-body-tertiary">
+          <div class="card-body">
+            <h5 class="card-title mb-0">Prof. Dr. Ahmad bin Abdullah</h5>
+            <p class="text-muted mb-3">Head of Software Engineering Department</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-envelope text-secondary"></i> Email</span> ahmad@ukm.edu.my
+              </li>
+              <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-telephone text-secondary"></i> Phone</span> +603-8921 6000
+              </li>
+              <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-building text-secondary"></i> Office</span> FTSM, Block A, 3.12
+              </li>
+              <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-link-45deg text-secondary"></i> Relationship</span> 
+                <span class="badge rounded-pill bg-secondary">Academic Advisor (2 years)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colleague Tab -->
+      <div class="tab-pane fade" id="colleague" role="tabpanel" aria-labelledby="colleague-tab">
+        <div class="card shadow-sm border bg-body-tertiary">
+          <div class="card-body">
+            <h5 class="card-title mb-0">Kuhaan Raaj</h5>
+            <p class="text-muted mb-3">Software Engineer, Year 2</p>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-envelope text-secondary"></i> Email</span> kuhaan@ukm.edu.my
+              </li>
+              <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-telephone text-secondary"></i> Phone</span> +603-8921 6015
+              </li>
+              <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-building text-secondary"></i> Office</span> FTSM, Block B, 2.08
+              </li>
+              <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-link-45deg text-secondary"></i> Relationship</span> 
+                <span class="badge rounded-pill bg-primary">Course Mate</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Footer -->
+  <div class="bg-secondary text-white text-center py-5 mt-5">
+    <div class="container">
+      <p class="mb-0">
+        <i class="bi bi-c-circle"></i> 2026 SOMESH.
+        Built with <i class="bi bi-balloon-heart-fill text-danger"></i> Bootstrap 5.
+      </p>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Contact Form Handler -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('inputName').value;
+      const email = document.getElementById('inputEmail').value;
+      const phone = document.getElementById('inputPhone').value;
+      const message = document.getElementById('inputMessage').value;
+      
+      const subject = encodeURIComponent(`Digital CV Contact from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`);
+      
+      window.location.href = `mailto:a218815@siswa.ukm.edu.my?subject=${subject}&body=${body}`;
+    });
+  </script>
+
+</body>
+</html>
