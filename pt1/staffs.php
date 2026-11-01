@@ -26,19 +26,19 @@ ob_start();
     <form action="" method="post" class="needs-validation" novalidate>
       <div class="row g-3">
         <div class="col-md-3">
-          <label for="staff_num" class="form-label">Staff ID <span class="text-danger">*</span></label>
+          <label for="staff_num" class="form-label">Staff ID <span class="text-danger" aria-hidden="true">*</span></label>
           <input name="staff_num" id="staff_num" type="text" class="form-control" placeholder="Enter Staff ID" required>
         </div>
         <div class="col-md-3">
-          <label for="staff_name" class="form-label">Name <span class="text-danger">*</span></label>
+          <label for="staff_name" class="form-label">Name <span class="text-danger" aria-hidden="true">*</span></label>
           <input name="staff_name" id="staff_name" type="text" class="form-control" placeholder="Enter Staff Name" required>
         </div>
         <div class="col-md-3">
-          <label for="staff_phone" class="form-label">Phone <span class="text-danger">*</span></label>
+          <label for="staff_phone" class="form-label">Phone Number <span class="text-danger" aria-hidden="true">*</span></label>
           <input name="staff_phone" id="staff_phone" type="text" class="form-control" placeholder="Enter Phone Number" required>
         </div>
         <div class="col-md-3">
-          <label for="staff_email" class="form-label">Email <span class="text-danger">*</span></label>
+          <label for="staff_email" class="form-label">Email Address <span class="text-danger" aria-hidden="true">*</span></label>
           <input name="staff_email" id="staff_email" type="email" class="form-control" placeholder="Enter Email Address" required>
         </div>
       </div>
@@ -64,7 +64,7 @@ ob_start();
         <small class="text-muted">View and manage all staff members</small>
       </div>
       <div class="col-auto">
-        <span class="badge bg-success">Total: 1 items</span>
+        <span class="badge bg-success">Total: 2 items</span>
       </div>
     </div>
     <hr>
@@ -89,6 +89,19 @@ ob_start();
               <a href="#" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
               <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
             </td>
+          </tr>
+          <tr>
+            <td>S002</td>
+            <td>Trishan</td>
+            <td>011-2345678</td>
+            <td>kaka@example.com</td>
+            <td>
+              <a href="#" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
+              <a href="#" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="5" class="text-center">No staff members found</td>
           </tr>
         </tbody>
       </table>

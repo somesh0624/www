@@ -6,7 +6,7 @@ ob_start();
 <div class="card shadow border-0 border-start border-5 border-primary mb-4">
   <div class="card-body">
     <h2 class="mb-1">Order Details</h2>
-    <p class="text-muted mb-0">Order #0001 for Alice Johnson</p>
+    <p class="text-muted mb-0">Order #O001 for Alice Johnson</p>
   </div>
 </div>
 
@@ -15,7 +15,7 @@ ob_start();
   <div class="card-body">
     <div class="row g-3">
       <div class="col-md-4"><strong>Order Date</strong><br>2026-10-03</div>
-      <div class="col-md-4"><strong>Staff</strong><br>Jane Smith</div>
+      <div class="col-md-4"><strong>Staff</strong><br>Somesh</div>
       <div class="col-md-4"><strong>Customer</strong><br>Alice Johnson</div>
     </div>
   </div>
@@ -27,18 +27,18 @@ ob_start();
     <h5 class="mb-3"><i class="bi bi-cart-plus text-primary me-2"></i>Add Product</h5>
     <hr>
     <form action="" method="post" class="needs-validation" novalidate>
-      <input type="hidden" name="order_num" value="0001">
+      <input type="hidden" name="order_num" value="O001">
       <div class="row g-3">
         <div class="col-md-8">
-          <label for="product_num" class="form-label">Product <span class="text-danger">*</span></label>
+          <label for="product_num" class="form-label">Product <span class="text-danger" aria-hidden="true">*</span></label>
           <select name="product_num" id="product_num" class="form-select" required>
             <option value="">Select Product</option>
             <option value="SK001">Nebula Purple Crew Socks (Stock = 10)</option>
-            <option value="SK002">Supernova Ankle Socks (Stock = 5)</option>
+            <option value="SK002">Nowhere Strawberry Socks (Stock = 5)</option>
           </select>
         </div>
         <div class="col-md-4">
-          <label for="quantity" class="form-label">Quantity <span class="text-danger">*</span></label>
+          <label for="quantity" class="form-label">Quantity <span class="text-danger" aria-hidden="true">*</span></label>
           <input name="quantity" id="quantity" type="number" class="form-control" min="1" value="1" required>
         </div>
       </div>
@@ -50,7 +50,7 @@ ob_start();
 </div>
 
 <!-- Products in Order Table -->
-<div class="card shadow-sm">
+<div class="card shadow-sm mb-4">
   <div class="card-body">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h5 class="mb-0"><i class="bi bi-table text-primary me-2"></i>Products in Order</h5>
@@ -89,7 +89,7 @@ ob_start();
         </tfoot>
       </table>
     </div>
-    <a href="orders.php" class="btn btn-secondary mt-3"><i class="bi bi-arrow-left me-1"></i>Back to Orders</a>
+    <a href="orders.php" class="btn btn-secondary mt-2"><i class="bi bi-arrow-left me-1"></i>Back to Orders</a>
   </div>
 </div>
 

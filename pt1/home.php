@@ -66,7 +66,7 @@ ob_start();
         <i class="bi bi-people-fill fs-1 me-3"></i>
         <div>
           <h6 class="mb-0 text-white-50">Customers</h6>
-          <h3 class="mb-0 fw-bold">1 Clients</h3>
+          <h3 class="mb-0 fw-bold">2 Clients</h3>
         </div>
       </div>
     </div>

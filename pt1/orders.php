@@ -36,8 +36,8 @@ ob_start();
                     <label for="staff_num" class="form-label">Staff <span class="text-danger" aria-hidden="true">*</span></label>
                     <select name="staff_num" id="staff_num" class="form-select" required>
                         <option value="">Select Staff</option>
-                        <option value="S001">Jane Smith</option>
-                        <option value="S002">Ahmad Baihaqi</option>
+                        <option value="S001">Somesh</option>
+                        <option value="S002">Trishan</option>
                     </select>
                 </div>
                 <div class="col-md-4">
@@ -96,7 +96,7 @@ ob_start();
                     <tr>
                         <td>O001</td>
                         <td>2026-10-03</td>
-                        <td>Jane Smith</td>
+                        <td>Somesh</td>
                         <td>Alice Johnson</td>
                         <td>
                             <a href="orderdetails.php" class="btn btn-sm btn-info text-white" title="Order details">

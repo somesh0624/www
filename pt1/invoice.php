@@ -37,8 +37,8 @@ ob_start();
             </div>
             <div class="col-md-6 text-md-end">
                 <strong>Staff</strong><br>
-                Jane Smith<br>
-                janesmith@example.com
+                Somesh<br>
+                somesh@example.com
             </div>
         </div>
         <div class="table-responsive">
@@ -85,7 +85,7 @@ ob_start();
 
     .card {
         box-shadow: none !important;
-        border: 1px solid #dee2e6 !important;
+        border: none !important;
     }
 
     .table-dark th {
